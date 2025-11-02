@@ -1,0 +1,30 @@
+0) Vienna-0.txt: initial configuration
+
+1) Basic router configuration:
+   - configure hostname Vienna, disable DNS lookup
+   - create user admin with password cisco123 and root access
+ 
+2) Configuring network interfaces 
+   - configure serial interface s1/0 with IP address 10.2.2.2/30
+   - configure LAN interface e0/0 with IP address 192.168.30.1/24
+   - create a loopback interface with IP address 192.168.40.1/24
+
+3) Configure DHCP server to LAN
+   - Exclude the first 10 IP addresses from LAN 192.168.30.0/24
+   - Set default gateway to the 192.168.30.1
+   - Set DNS to 8.8.8.8
+
+4) Configure SSH on the router
+   - use domain name vienna.com
+   - allow only SSH access to the router 
+
+5) Configure OSPF routing
+   - exchange routing information about all connected networks
+   - use area 0 
+   - do not send routing updates to local networks
+
+6) Configure packet filtering for LAN at Vienna
+   - LAN 192.168.30.0/24 is allowed to communicate with 192.168.40.0/24 (all traffic)
+   - LAN 192.168.30.0/24 can access web server at the server 10.1.1.10
+   - Allow DNS and ICMP communication for all local networks. 
+   - No other traffic is allowed to originate from LAN 192.168.30.0/24

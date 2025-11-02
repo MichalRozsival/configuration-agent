@@ -1,0 +1,25 @@
+0) Initial configuration: see Prague-0.txt, ISP-0.txt, Brno-0.txt, SW1-0.txt
+
+1) Basic network configuration: see Prague-1.txt, ISP-1.txt, Brno-1.txt 
+   - Configure network 192.168.20.0/30 between ISP interface s1/0 and Brno interface S1/0
+   - Configure network 192.168.10.0/24 between ISP interface e0/0 and Prague interface e0/0
+   - ISP is connected to the Internet via interface e0/1 using DHCP. 
+   - Configure NAT on ISP from local interface e0/0 and s1/0 toward the Internet on e0/1
+   - Set static default paths from Brno and Prague towards ISP. 
+ 
+2) Configuring Prague router: see Prague-2.txt
+   - Configure a DHCP server for LAN 172.16.10.0/24 on the router Prague and interface e0/1. Reserve the first 10 address for future usage. Set the DNS server to 8.8.8.8.
+   - Configure a loopback interface with IP address 172.16.20.1/32 on Prague. 
+   - Configure NAT on Prague translating all LAN traffic towards ISP. 
+
+3) Configuring Brno router: see Brno-3.txt
+   - Configure a DHCP server for LAN 172.16.30.0/24 on the router Brno and interface e0/0. Reserve the first 10 address for future usage. Set the DNS server to 8.8.8.8.
+   - Configure a loopback interface with IP address 172.16.30.1/32 on Brno. 
+   - Configure NAT on Brno translating all LAN traffic towards ISP. 
+
+4) Configure VPN between Prague and Brno, see Prague-4.txt, Brno-4.txt
+   - Configure GRE tunnel to provide a VPN between Prague and Brno. Use network 172.16.12.0/30 for the tunnel. 
+   - Configure OSPF routing area 1 for LANs in the VPN. Do not distribute routing information towards local LANs. 
+
+5) Configure packet capturing on the switch.
+   - Configure port mirroring on switch SW1. Capture traffic from interface e0/1 will be sent to interface e0/2.

@@ -1,0 +1,31 @@
+0) Initial configuration: see London-0.txt, ISP-0.txt, Belfast-0.txt
+
+1) Basic network configuration:, see London-1.txt, ISP-1.txt, Belfast-1.txt 
+   - Configure network 10.2.2.0/30 between ISP interface s1/0 and Belfast interface S1/0
+   - Configure network 10.1.1.0/24 between ISP interface e0/1 and London interface e0/0
+   - Configure LAN 192.168.2.0/24 on London on interface e0/1.
+   - Configure DHCPv4 for LAN 192.168.2.0/24 on London with DNS server 10.10.10.1. Exclude the first 10 addresses from the DHCP.
+   - Configure NAT on ISP from local interface e0/1 and s1/0 toward the Internet on e0/0
+ 
+2) Configuring IPv4 routing, see London-2.txt, ISP-2.txt, Belfast-2.txt
+   - configure OSPF routing area 1 for all local networks on ISP, London and Belfast
+   - distribute routing information only between these routers
+   - redistribute the default getaway using OSPF
+
+3) Configure IPv6 networking on London, see London-3.txt
+   - Configure LAN 2001:db8:1::/64 on the loopback 
+   - Configure LAN 2001:db8:2::/64 on the interface e0/1 and a link local address.
+   - Configure SLAAC for LAN on e0/1
+
+4) Configure IPv6 networking on Belfast, see Belfast-4.txt
+   - Configure LAN 2001:db8:3::/64 on the loopback 
+   - Configure LAN 2001:db8:4::/64 on the interface e0/1 and a link local address.
+   - Configure a stateless DHCPv6 server on Belfast with domain belfast.uk and DNS server 2001:db8:4::1.
+
+5) Configuring IPv6 tunnel, see London-5.txt, Belfast-5.txt
+   - Configure a tunnel IPv6 over IPv4 between London and Belfast
+   - Use IPv6 address range fd01:12::/64 for the tunnel
+
+6) Configure IPv6 routing, see London-6.txt, Belfast-6.txt
+   - Configure RIPng routing between London and Belfast
+   - All IPv6 LANs should accessible through RIPng routing. 

@@ -1,0 +1,177 @@
+
+!
+! Last configuration change at 10:37:09 UTC Fri Aug 1 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Belfast
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+ipv6 dhcp pool Belfast
+ dns-server 2001:DB8:4::1
+ domain-name belfast.uk
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ no shutdown
+ no ip address
+ ipv6 address 2001:DB8:3::1/64
+!
+interface Tunnel1
+ no shutdown
+ no ip address
+ ipv6 address FD01:12::2/64
+ tunnel source Serial1/0
+ tunnel mode ipv6ip
+ tunnel destination 10.1.1.2
+!
+interface Ethernet0/0
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ duplex auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:4::1/64
+ ipv6 nd other-config-flag
+ ipv6 dhcp server Belfast
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Serial1/0
+ no shutdown
+ ip address 10.2.2.2 255.255.255.252
+ serial restart-delay 0
+!
+interface Serial1/1
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Serial1/0
+ network 10.2.2.0 0.0.0.3 area 1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

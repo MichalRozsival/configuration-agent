@@ -1,0 +1,159 @@
+
+!
+! Last configuration change at 11:00:56 UTC Fri Aug 1 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname London
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 192.168.2.1 192.168.2.10
+!
+ip dhcp pool LAN1
+ network 192.168.2.0 255.255.255.0
+ dns-server 8.8.8.8 
+ default-router 192.168.2.1 
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ no shutdown
+ no ip address
+ ipv6 address 2001:DB8:1::1/64
+ ipv6 rip RIP0 enable
+!
+interface Tunnel1
+ no shutdown
+ no ip address
+ ipv6 address FD01:12::1/64
+ ipv6 rip RIP0 enable
+ tunnel source Ethernet0/0
+ tunnel mode ipv6ip
+ tunnel destination 10.2.2.2
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.1.1.2 255.255.255.0
+ duplex auto
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2001:DB8:2::1/64
+ ipv6 rip RIP0 enable
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Ethernet0/0
+ network 10.1.1.0 0.0.0.255 area 1
+ network 192.168.2.0 0.0.0.3 area 1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 router rip RIP0
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

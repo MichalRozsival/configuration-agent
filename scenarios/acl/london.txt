@@ -1,0 +1,178 @@
+
+!
+! Last configuration change at 09:10:24 UTC Mon Mar 21 2022
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname London
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+!
+ip dhcp pool LAN1
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1 
+ dns-server 10.10.10.1 
+!
+!
+no ip domain lookup
+ip domain name london.com
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FCZ164460K7
+license accept end user agreement
+license boot module c2900 technology-package uck9
+hw-module pvdm 0/0
+!
+!
+!
+username admin privilege 15 password 0 cisco123
+!
+redundancy
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ ip address 192.168.20.1 255.255.255.0
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ ip address 10.1.1.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ no fair-queue
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+router ospf 1
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ network 10.1.1.0 0.0.0.255 area 0
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+access-list 101 permit tcp 192.168.10.0 0.0.0.255 any eq www
+access-list 101 permit tcp 192.168.10.0 0.0.0.255 any eq 443
+access-list 101 permit tcp host 192.168.10.12 host 192.168.10.1 eq 22
+access-list 101 permit icmp 192.168.10.0 0.0.0.255 any
+access-list 101 permit udp 192.168.10.0 0.0.0.255 any eq domain
+access-list 101 permit ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+access-list 101 deny   ip any any
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+voice-port 0/2/0
+!
+voice-port 0/2/1
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+!
+line con 0
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+scheduler allocate 20000 1000
+end
