@@ -8,7 +8,9 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
   * [acl - ACL rules](acl): filtering network traffic using standard and extended ACL rules. 
   * [gre - VPN tunnel using GRE](gre): implementation of VPN tunnel using GRE. 
   * [ipv6 - IPv6 addressing](ipv6): combination of IPv4 and IPv6 networking with an IPv6 tunnel.
-  * [ipv6 - IPv6 addressing](bgp): BGP
-  * [ipv6 - IPv6 addressing](mpls): MPLS
-
+  * [bgp - BPG routing](bgp): a simple BGP routing between ASes
+  * [mpls - MPLS switching](mpls): a combination of MPLS switching with OSPF and iBGP.
+  * [hsrp - router redundancy](hsrp): configuring router redundancy using HSRP.
+  * [ipsec - IPSec security](ipsec): creating an IPSec tunnel between remote routers. 
+  
 
