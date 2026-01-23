@@ -7,5 +7,8 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
 ## A list of available scenarios:
   * [acl - ACL rules](acl): filtering network traffic using standard and extended ACL rules. 
   * [gre - VPN tunnel using GRE](gre): implementation of VPN tunnel using GRE. 
-  * [ipv6 - IPv6 addressing](ipv6): combination of IPv4 and IPv6 networking with an IPv6 tunnel. 
+  * [ipv6 - IPv6 addressing](ipv6): combination of IPv4 and IPv6 networking with an IPv6 tunnel.
+  * [ipv6 - IPv6 addressing](bgp): BGP
+  * [ipv6 - IPv6 addressing](mpls): MPLS
+
 
