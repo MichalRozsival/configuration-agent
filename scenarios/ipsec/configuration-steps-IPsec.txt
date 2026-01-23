@@ -1,0 +1,52 @@
+0) initial configuration(no domainlookup, hostnames,....): see R1-0.txt, R2-0.txt
+
+1) configure basic routing and ipv4 address: see R1-1.txt, R2-1.txt
+	- create network 1.1.1.0/30 between routers R1 (interface e0/0) and R2 (interface e0/0)
+	- configure address 192.168.10.1 on R1 (interface e0/1) it will be gateway router for network 192.168.10.0/24
+	- configure address 192.168.20.1 on R2 (interface e0/1) it will be gateway router for network 192.168.20.0/24
+	- configure static route on R1 => network 192.168.20.0/24 is behind adress 1.1.1.2
+	- configure static route on R2 => network 192.168.10.0/24 is behind adress 1.1.1.1
+
+2) configure ISAKMP Phase 1 tunnel on router R1: see R1-2.txt
+	- configure ISAKMP Phase 1 policy on router R1 with these parametrs:
+		- encryption method will be 3DES
+		- hashing algorithm will be md5
+		- authentication method will be pre-share
+		- use Diffie-Hellman group (group 2)
+		- session key lifetime will be 86400
+	- define a pre share key for authentication with peer (1.1.1.2) => name the key firewallcx
+	
+3) configure ISAKMP Phase 1 tunnel on router R2: see R2-3.txt 
+	- configure ISAKMP Phase 1 policy on router R2 with these parametrs:
+		- encryption method will be 3DES
+		- hashing algorithm will be md5
+		- authentication method will be pre-share
+		- use Diffie-Hellman group (group 2)
+		- session key lifetime will be 86400
+	- define a pre share key for authentication with peer (1.1.1.1) => name the key firewallcx
+
+4) configure ISAKMP Phase 2 tunnel on router R1: see R1-4.txt
+	- create extended ACL on router R1 with name VPN-TRAFFIC to define which trafic will pass through the VPN tunnel 
+	- create IPsec Transform with name MYSET and these parametrs:
+		- encryption method ESP-3DES
+		- Hashing algorithm MD5
+	- create crypto map with name ROUTER1_TO_ROUTER2 and these parametrs:
+		- set peer to 1.1.1.2
+		- set transform set to MYSET
+		- set match address to VPN-TRAFFIC
+	- apply crypto map to the public interface (e0/0)
+	
+5) configure ISAKMP Phase 2 tunnel on routers R2: see R2-5.txt  
+	- create extended ACL on router R2 with name VPN-TRAFFIC to define which trafic will pass through the VPN tunnel 
+	- create IPsec Transform with name MYSET and these parametrs:
+		- encryption method ESP-3DES
+		- Hashing algorithm MD5
+	- create crypto map with name ROUTER2_TO_ROUTER1 and these parametrs:
+		- set peer to 1.1.1.1
+		- set transform set to MYSET
+		- set match address to VPN-TRAFFIC
+	- apply crypto map to the public interface (e0/0)
+
+
+	
+	

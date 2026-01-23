@@ -1,0 +1,209 @@
+
+!
+! Last configuration change at 00:25:05 UTC Mon Jan 19 2026
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname PE1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip vrf customer
+ rd 100:1
+ route-target export 1:100
+ route-target import 1:100
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no shutdown
+ ip address 10.0.3.1 255.255.255.255
+!
+interface Ethernet0/0
+ no shutdown
+ ip vrf forwarding customer
+ ip address 192.168.0.1 255.255.255.0
+ duplex auto
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Serial1/0
+ no shutdown
+ ip address 10.0.1.2 255.255.255.252
+ mpls ip
+ serial restart-delay 0
+!
+interface Serial1/1
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/0
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/1
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/2
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 2 vrf customer
+ router-id 1.1.1.1
+ capability vrf-lite
+ redistribute bgp 100 subnets
+ network 192.168.0.0 0.0.0.255 area 1
+!
+router ospf 1
+ network 10.0.0.0 0.255.255.255 area 1
+!
+router bgp 100
+ bgp log-neighbor-changes
+ neighbor 10.0.5.1 remote-as 100
+ neighbor 10.0.5.1 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 10.0.5.1 activate
+  neighbor 10.0.5.1 send-community both
+ exit-address-family
+ !
+ address-family ipv4 vrf customer
+  redistribute ospf 2
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

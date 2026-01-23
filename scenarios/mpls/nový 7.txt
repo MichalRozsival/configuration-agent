@@ -1,0 +1,38 @@
+0) initial configuration (no domainlookup, hostnames, ...): see P-0.txt, PE1-0.txt, PE2-0.txt, HQ-0.txt, Branch-0.txt
+
+1) configure networks and ipv4 addreses on all devices: see P-1.txt, PE1-1.txt, PE2-1.txt, HQ-1.txt, Branch-1.txt
+	- create network 10.0.1.0/30 between routers P (int S1/0) and PE1 (int S1/0)
+	- create network 10.0.2.0/30 between routers P (int S1/1) and PE2 (int S1/1)
+	- create loopback on P (int loopback0) with address 10.0.4.1/32
+	- create loopback on PE1 (int loopback0) with address 10.0.3.1/32
+	- create loopback on PE2 (int loopback0) with address 10.0.2.1/32
+	- create network 192.168.0.0/24 between routers PE1 (int e0/0) and HQ (int e0/0)
+	- create network 192.168.2.0/24 between routers PE2 (int e0/0) and Branch (int e0/0)
+	- create loopback on HQ (int loopback0) with address 192.168.1.1/32
+	- create loopback on HQ (int loopback0) with address 192.168.1.1/32
+	
+2) configure OSPF routing for Service Provider Domain: see P-2.txt, PE1-2.txt, PE2-2.txt
+	- configure OPSF routing over VPN tunnel process number 1 and router-id of loopback0 for each router
+
+3) configure MPLS for Service Provider Domain: see P-3.txt, PE1-3.txt, PE2-3.txt
+	- use Lopback 0 as Label Distribution Protocol router-id
+	- enable MPLS on interface s1/0 (P and PE1) and s1/1 (P and PE2) 
+
+4) configure VRF on Provider edge routers: see PE1-4.txt, PE2-4.txt
+	- route distinguisher on both routers is 100
+	- route-target is both 1:100
+	- configure vrf forwarding on interface e0/0 
+
+5) configure OSPF routing for Customer domain: see PE1-5.txt, PE2-5.txt, HQ-5.txt, Branch-5.txt
+	- configure opsf 2 for vrf customer on provider edge routers 
+	- router-id for PE1 is 1.1.1.1 and for PE2 is 2.2.2.2
+	- configure capability vrf-lite
+	- distribute network 192.168.0.0/24 between routers PE1 and HQ
+	- distribute network 192.168.2.0/24 between routers PE2 and Branch
+
+6) configure BGP between Provider edge routers: see PE1-6.txt, PE2-6.txt
+	- both Provider edge router have as 100
+	- configure update-source with loopback0
+	- configure adress-family vpnv4
+	- configure redistribution of ospf 2 on vrf customer for BGP on both routers
+	- configure redistribution of BGP on ospf2 vrf customer for both routers

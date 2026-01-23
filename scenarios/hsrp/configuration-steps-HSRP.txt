@@ -1,0 +1,22 @@
+0) initial configuration (no domainlookup, hostnames, ...): see R1_ISP-0.txt, R2_ISP-0.txt, R1-0.txt, R2-0.txt, SW1-0.txt, Central-0.txt, SW_Central-0.txt
+
+1) configure basic routing and ipv4 address: see R1_ISP-1.txt, R2_ISP-1.txt, R1-1.txt, R2-2.txt, Central-1.txt 
+	- create network 192.168.10.0/30 between routers R2(int e0/0), R2_ISP(int e0/1)
+	- create network 192.168.20.0/30 between routers R1(int e0/0), R1_ISP(int e0/1)
+	- create network 192.168.30.0/29 between routers R1(int e0/1), R2(int e0/1), Central(int e0/0)
+	- edge routers (R1_ISP and R2_ISP) are each connected to internet via their intereface e0/0 using DHCP
+	- configure default route towards internet from R1 to R1_ISP and from R2 to R2_ISP
+	- configure PAT on R1_ISP and R2_ISP for networks 192.168.20.0(on R1_ISP), 192.168.10.0(on R2_ISP) and 192.168.30.0(on both)
+	- configure static route towards 192.168.30.0/29 throught 192.168.20.2 on R1_ISP
+	- configure static route towards 192.168.30.0/29 throught 192.168.10.2 on R2_ISP
+	
+2) configure router Central: see Central-2.txt 
+	- configure IPv4 address from address range 172.16.10.0/24 on intereface e0/0(gateway)
+	- configure DHCP server on router FIT, exclude first 10 addresses, network 172.16.10.0/24 and dns server 8.8.8.8
+	- configure PAT for all devices in local network so on interface e0/0 will be outside and intereface e0/1 will be inside
+
+3) configure HSRP group on routers R1, R2: see R1-3.txt, R2-3.txt, Central-3.txt
+	- create HSRP group for routers R1, R2 on intereface e0/1 (on both routers) which virtual address will be 192.168.30.4
+	- change priority so that R1 will be priorities
+	- configure HSRP Interface Tracking on intereface e0/0 on R1 so if R1 goes down R2 will take its place
+	- configure default route towards internet on Central

@@ -1,0 +1,13 @@
+0) initial configuration (no domainlookup, hostnames, ...): see Brno-0.txt, Prague-0.txt, Provider-0.txt
+
+1) configure networks between routers (Provider, Prague and Brno): see Brno-1.txt, Prague-1.txt, Provider-1.txt
+	- create network 10.10.10.0/30 between routers Provider and Prague on interface s1/0 (both routers)
+	- create network 20.20.20.0/30 between routers Provider and Brno on interface s1/1 (both routers)
+	- configure IPv4 address from network 192.168.10.0/24 to router Prague on interface e0/0
+	- configure IPv4 address from network 192.168.20.0/24 to router Brno on interface e0/0
+	
+2) configure routing protocol BGP on routers: see Brno-2.txt, Prague-2.txt, Provider-2.txt
+	- router Provider has bgp router-id 1.1.1.1 and AS number of 35 (distribute routing information about all known networks)
+	- router Prague has bgp router-id 2.2.2.2 and AS number of 20 (distribute routing information about all known networks)
+	- router Brno has bgp router-id 3.3.3.3 and AS number of 50 (distribute routing information about all known networks)
+

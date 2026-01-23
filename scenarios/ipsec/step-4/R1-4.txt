@@ -1,0 +1,192 @@
+
+!
+! Last configuration change at 21:37:35 UTC Mon Dec 1 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+crypto isakmp policy 1
+ encr 3des
+ hash md5
+ authentication pre-share
+ group 2
+crypto isakmp key firewallcx address 1.1.1.2        
+!
+!
+crypto ipsec transform-set MYSET esp-3des esp-md5-hmac 
+ mode tunnel
+!
+!
+!
+crypto map ROUTER1_TO_ROUTER2 10 ipsec-isakmp 
+ set peer 1.1.1.2
+ set transform-set MYSET 
+ match address VPN-TRAFFIC
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 1.1.1.1 255.255.255.252
+ duplex auto
+ crypto map ROUTER1_TO_ROUTER2
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Serial1/0
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/1
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/0
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/1
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/2
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no shutdown
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 192.168.20.0 255.255.255.0 1.1.1.2
+!
+ip access-list extended VPN-TRAFFIC
+ permit ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end
