@@ -15,6 +15,22 @@ Here, we present a final evaluation using three scores:
 | Task 5 | 83% | 100% | 100% | OSPF routing |
 | Task 6 | 0% | 0% | 100% | ACL filtering |
 
+### Overview of the feature tests
+| Task   |  Feater test | Description |
+| :------| :----|:----|
+| Task 1 | eval_hostname | hostname is Vienna |
+| Task 1 | eval_dns_lookup_status | DNS lookup is disabled |
+| Task 1 | eval_user | existence of an user with name admin, password cisco123 and the root access |
+| Task 2 | eval_serial_interface | existence of the serial interface s1/0 with the IP address 10.2.2.2/30 |
+| Task 2 | eval_lan_interfac e| existence of the ethernet interface eth0/0 with the IP address 192.168.30.1/24 |
+| Task 2 | eval_loopback_interface | existence of the loopback interface with the IP address 192.168.40.1/24 |
+| Task 3 | eval_lan_ip_address_exclude | exclusion of the IP range 192.168.30.1 - 192.168.30.10 |
+| Task 3 | eval_default_gateway | the default gateway set to 192.168.30.1 |
+| Task 3 | eval_dns | the DNS server set to 8.8.8.8 |
+
+
+
+
 ### Overview of the regression tests
 | Task   |  Regression tests |
 | :------| :----|
