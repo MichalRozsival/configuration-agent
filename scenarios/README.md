@@ -14,8 +14,8 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
   * [ipsec - IPSec security](ipsec): creating an IPSec tunnel between remote routers. 
   
 ## An overview of evaluated tasks
-| Scenario | Number of devices | Evaluated tasks |
-| :------- | :---------------- | :-------------- |
+| Scenario | Number of devices | Evaluated tasks for each scenario |
+| :------- | :---------------- | :-------------------------------- |
 | ACL | 3 routers | IP addressing, DHCP server, SSH access, OSPF routing, ACL filtering |
 | GRE | 3 routers, 1 switch | IP addressing, DHCP server, NAT translation, GRE tunnel, OSPF routing |
 | HSRP | 5 routers, 2 switches | IP addressing, static routing, NAT translation, DHCP, HSRP configuration |
