@@ -16,7 +16,7 @@ Here, we present a final evaluation using three scores:
 | Task 6 | 0% | 0% | 100% | ACL filtering |
 
 ### Overview of the regression tests
-| Task |  Regression tests |
+| Task   |  Regression tests |
 | :------| :----|
 | Task 1 | cmp_domain_name, cmp_interfaces_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmp_interfaces_ospf |
 | Task 2 | cmp_hostname, cmp_domain_name, cmp_users_definitions, cmp_users_properties, cmp_dns_lookup_status |
