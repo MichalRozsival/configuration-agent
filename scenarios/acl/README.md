@@ -17,7 +17,7 @@ Here, we present a final evaluation using three scores:
 
 ### Overview of the regression tests
 | Task |  Regression tests |
-| :----| :----|
+| :------| :----|
 | Task 1 | cmp_domain_name, cmp_interfaces_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmp_interfaces_ospf |
 | Task 2 | cmp_hostname, cmp_domain_name, cmp_users_definitions, cmp_users_properties, cmp_dns_lookup_status |
 | Task 3 | cmp_hostname, cmp_domain_name, cmp_interface_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmps_interfaces_ospf, cmp_users_definition, cmp_users_properties, cmp_dns_lookup_status |
