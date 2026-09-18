@@ -27,9 +27,15 @@ Here, we present a final evaluation using three scores:
 | Task 3 | eval_lan_ip_address_exclude | exclusion of the IP range 192.168.30.1 - 192.168.30.10 |
 | Task 3 | eval_default_gateway | the default gateway set to 192.168.30.1 |
 | Task 3 | eval_dns | the DNS server set to 8.8.8.8 |
-
-
-
+| Task 4 | eval_domain_name | ssh domain name set to vienna.com |
+| Task 4 | eval_ssh_access_vty | ssh configurated on the VTY device |
+| Task 4 | eval_ssh_reachability | reachability via SSH |
+| Task 5 | eval_ospf_area | all interfaces are within OSPF area 0 |
+| Task 5 | eval_updates_sending | LAN interfaces are passive and WAN interfaces are active |
+| Task 6 | eval_30_to_40_communication | all traffic allowed from 192.168.30.0/24 to 192.168.40.0/24 |
+| Task 6 | eval_30_to_web | network 192.168.30.0/24 can access the web server at 10.1.1.10 |
+| Task 6 | eval_dns_communication_local_networks | DNS traffic can pass from 192.168.30.0/24 to 192.168.40.0/24 |
+| Task 6 | eval_icmp_communication_local_networks | ICMP traffic can pass from 192.168.30.0/24 to 192.168.40.0/24 |
 
 ### Overview of the regression tests
 | Task   |  Regression tests |
