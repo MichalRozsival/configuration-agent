@@ -1,8 +1,12 @@
-## Evaluation of the ACL scenario on LLM models GPT 5, Deepseek, Grok and GTP-OSS
+## Evaluation of the ACL scenario on the LLM model GTP-OSS
 
-Explanation of the metrics and details to the evaluation framework will be published in the NCA 2026 conference in November 2026. 
-Here we give a final evaluation using three scores: 
-- Configuration Accuracy Score (CAS): compares a generated configuration with the reference configuration
-- Weighted Feature Coverage (WFC): measures the percentage of successfully passed feature tests
-- Regression Preservation Rate (RPR): quantifies the rate of scenario-level invariants hold after the configuration update
+The explanation of the metrics and details of the evaluation framework will be published at the NCA 2026 conference in November 2026. 
+Here, we present a final evaluation using three scores: 
+- Configuration Accuracy Score (CAS): compares a generated configuration with the reference configuration.
+- Weighted Feature Coverage (WFC): measures the percentage of feature tests that successfully passed.
+- Regression Preservation Rate (RPR): quantifies the proportion of scenario-level invariants that hold after the configuration update.
 
+| Task | CAS | WFC | RPR | Task description |
+| :----| :-: | :-: | :-: |:----|
+| Task 1 | 92,9% | 100% | 100% | hostname, DNS, user account |
+| Task 2 | 92,9% | 100% | 100% | configuration of interface: IP addresses and masks, loopback |
