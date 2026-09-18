@@ -17,3 +17,10 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
 | Scenario | Number of devices | Evaluated tasks |
 | :------- | :---------------- | :-------------- |
 | ACL | 3 routers | IP addressing, DHCP server, SSH access, OSPF routing, ACL filtering |
+| GRE | 3 routers, 1 switch | IP addressing, DHCP server, NAT translation, GRE tunnel, OSPF routing |
+| HSRP | 5 routers, 2 switches | IP addressing, static routing, NAT translation, DHCP, HSRP configuration |
+| IPv6 | 3 routers, 1 switch | IPv4 and IPv6 addressing, DHCPv4 and DHCPv6, IPv6 tunnelling, OSPF and RIPng routing |
+| BGP | 3 routers | IP addressing, BGP routing, route redistribution |
+| IPSec | 2 routers | IP addressing, static routers, ISAKMP configuration, key distribution, ACL, IPSec tunnelling |
+| Monitoring | 3 routers, 2 switches | NTP synchronisation, NAT, DHCP, Syslog, SNMPv2 and v3, CDP |
+| MPLS | 6 routers | IP addressing, OSPF routing, MPLS encapsulation, VRF, BGP routing |
