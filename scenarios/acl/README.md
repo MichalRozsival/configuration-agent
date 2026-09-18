@@ -1,4 +1,4 @@
-# Evaluation of the ACL scenario on LLM models GPT 5, Deepseek, Grok and GTP-OSS
+## Evaluation of the ACL scenario on LLM models GPT 5, Deepseek, Grok and GTP-OSS
 
 Explanation of the metrics and details to the evaluation framework will be published in the NCA 2026 conference in November 2026. 
 Here we give a final evaluation using three scores: 
