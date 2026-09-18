@@ -37,12 +37,26 @@ Here, we present a final evaluation using three scores:
 | Task 6 | eval_dns_communication_local_networks | DNS traffic can pass from 192.168.30.0/24 to 192.168.40.0/24 |
 | Task 6 | eval_icmp_communication_local_networks | ICMP traffic can pass from 192.168.30.0/24 to 192.168.40.0/24 |
 
-### Overview of the regression tests
+### Overview of the regression tests applied
 | Task   |  Regression tests |
 | :------| :----|
 | Task 1 | cmp_domain_name, cmp_interfaces_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmp_interfaces_ospf |
 | Task 2 | cmp_hostname, cmp_domain_name, cmp_users_definitions, cmp_users_properties, cmp_dns_lookup_status |
 | Task 3 | cmp_hostname, cmp_domain_name, cmp_interface_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmps_interfaces_ospf, cmp_users_definition, cmp_users_properties, cmp_dns_lookup_status |
 | Task 4 | cmp_hostname, cmp_interface_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmps_interfaces_ospf, cmp_users_definition, cmp_users_properties, cmp_dns_lookup_status|
-| Task 5 | cmp_hostname, cmp_domain_name, mp_users_definition, cmp_users_properties, cmp_dns_lookup_status|
+| Task 5 | cmp_hostname, cmp_domain_name, cmp_users_definition, cmp_users_properties, cmp_dns_lookup_status|
 | Task 6 | cmp_hostname, cmp_domain_name,  cmp_interface_definitions, cmp_interfaces_status, cmp_interfaces_ip, cmps_interfaces_ospf, cmp_users_definition, cmp_users_properties, cmp_dns_lookup_status |
+
+### Description of the regression tests
+| Regression test   |  Descrioption |
+| :------| :----|
+| cmp_hostname | compare configured hostnames |
+| cmp_domain_name | compare configured domain names |
+| cmp_interfaces_definitions | compare the names of the configured interfaces |
+| cmp_interfaces_status | compare the status on the configured interfaces |
+| cmp_interfaces_ip | compare the IP address on the configured interfaces |
+| cmp_interfaces_ospf | compare the OSPF settings on the configured interfaces |
+| cmp_users_definitions | compare configured users |
+| cmp_users_properties | compare properties of the configured users (password, privilege level) |
+| cmp_dns_lookup_status | compared DNS lookup status |
+
