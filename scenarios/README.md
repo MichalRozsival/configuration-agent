@@ -13,4 +13,7 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
   * [hsrp - router redundancy](hsrp): configuring router redundancy using HSRP.
   * [ipsec - IPSec security](ipsec): creating an IPSec tunnel between remote routers. 
   
-
+## An overview of evaluated tasks
+| Scenario | Number of devices | Evaluated tasks |
+| :------- | :---------------- | :-------------- |
+| ACL | 3 routers | IP addressing, DHCP server, SSH access, OSPF routing, ACL filtering |
