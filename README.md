@@ -11,4 +11,4 @@
 ## Project Structure
 - [scenarios](./scenarios/README.md) – a collection of real-world network configuration examples covering different aspects of networking.
 - [poster](./poster.pdf) – the poster at the NCA 2025 conference summarising the configuration agent’s functionality.
-- [abstract](abstract.pdf) – [the extended abstract to the NCA 2025 conference] (https://www.computer.org/csdl/proceedings-article/nca/2025/784200a306/2bZ8syEr91S) accompanying the poster.
+- [abstract](abstract.pdf) – [the extended abstract to the NCA 2025 conference](https://www.computer.org/csdl/proceedings-article/nca/2025/784200a306/2bZ8syEr91S) accompanying the poster.
