@@ -10,3 +10,9 @@ Here, we present a final evaluation using three scores:
 | :----| :-: | :-: | :-: |:----|
 | Task 1 | 92,9% | 100% | 100% | hostname, DNS, user account |
 | Task 2 | 92,9% | 100% | 100% | configuration of interface: IP addresses and masks, loopback |
+| Task 3 | 87% | 66,67% | 100% | configuration of the DHCP server|
+| Task 4 | 0% | 66,67% | 100% | SSH configuration |
+| Task 5 | 83% | 100% | 100% | OSPF routing |
+| Task 6 | 0% | 0% | 100% | ACL filtering |
+
+### Overview of the regression tests
