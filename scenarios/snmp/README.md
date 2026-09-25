@@ -2,7 +2,7 @@
 ## Description of the SNMP scenario 
 
 ### Topology
-!(snmp-topology.png)
+![topology](snmp-topology.png)
 
 ### The initial configuration of the topology 
 1. Perform basic router configuration.
@@ -18,7 +18,7 @@
 - Only allow traffic from ATT monitoring server to enter FW1. No other traffic except OSPF routing is permitted.
 - Only web, email and ssh services can be sent to RA. No other traffic is permitted to RA.
   
-### Description of the SNMP scenario to be configured using LLM
+### Configuration task: description of the SNMP scenario to be configured using the LLM
 > Configure the SNMP agents on routers RA, RB and RC.
 > - Set the community string to "att-monitoring".
 > - Restrict access to the SNMP service to the 1.1.1.1 host only. 
