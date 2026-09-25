@@ -1,3 +1,22 @@
+
+## Description of the SNMP scenario 
+
+### Topology
+(snmp-topology.png)
+
+### Description of initial configuration
+
+### Description of the SNMP scenario to be configured using LLM
+...
+Configure the SNMP agents on routers RA, RB and RC.
+- Set the community string to "att-monitoring".
+- Restrict access to the SNMP service to the 1.1.1.1 host only. 
+- Enable traps to be sent to the monitoring server. 
+
+Configure firewalls to enable SNMP monitoring.
+ - Update the ACLs on routers FW1 and FW2 to allow SNMP communication. 
+...
+
 ## Evaluation of the SNMP scenario 
 
 The explanation of the metrics and details of the evaluation framework will be published at the NCA 2026 conference in November 2026. 
