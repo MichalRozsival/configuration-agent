@@ -11,7 +11,8 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
   * [bgp - BPG routing](bgp): a simple BGP routing between ASes
   * [mpls - MPLS switching](mpls): a combination of MPLS switching with OSPF and iBGP.
   * [hsrp - router redundancy](hsrp): configuring router redundancy using HSRP.
-  * [ipsec - IPSec security](ipsec): creating an IPSec tunnel between remote routers. 
+  * [ipsec - IPSec security](ipsec): creating an IPSec tunnel between remote routers.
+  * [snmp - SNMP configuration ](snmp): configuring SNMP monitoring on the existing topology with firewalls. 
   
 ## An overview of evaluated tasks
 | Scenario | Number of devices | Evaluated tasks for tested scenarios |
@@ -24,3 +25,4 @@ The scenarios were deployed on Cisco router ISR 2911 with IOS 15.1, Catalyst 820
 | IPSec | 2 routers | IP addressing, static routers, ISAKMP configuration, key distribution, ACL, IPSec tunnelling |
 | Monitoring | 3 routers, 2 switches | NTP synchronisation, NAT, DHCP, Syslog, SNMPv2 and v3, CDP |
 | MPLS | 6 routers | IP addressing, OSPF routing, MPLS encapsulation, VRF, BGP routing |
+| SNMP | 7 routers, 2 firewalls | Configuring SNMP agent on routers RA, RB, RC, configuring ACLs on FW1 and FW2 to pass the SNMP traffic |
