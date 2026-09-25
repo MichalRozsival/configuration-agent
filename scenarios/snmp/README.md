@@ -5,18 +5,11 @@
 ![topology](snmp-topology.png)
 
 ### The initial configuration of the topology 
-1. Perform basic router configuration.
-- Configure the router hostnames and disable DNS lookup on them.
-2. Configure the network interfaces and IP addressing.
-- Configure IP addresses on the routers.
+1. Perform basic router configuration. Configure the router hostnames and disable DNS lookup on them.
+2. Configure the network interfaces and IP addressing. Configure IP addresses on the routers.
 3. Enable SSH on routers FW1 and RA. No other access is permitted for administrators.
-4. Configure OSPF routing.
-- Configure OSPF routing between routers R1, R2, R3, R4, FW1 and FW2.
-- Do not send routing updates towards the stub networks.
-- Configure default routes on routers RA, RB and RC.
-5. Configure filtering on firewalls FW1 and FW2.
-- Only allow traffic from ATT monitoring server to enter FW1. No other traffic except OSPF routing is permitted.
-- Only web, email and ssh services can be sent to RA. No other traffic is permitted to RA.
+4. Configure OSPF routing between routers R1, R2, R3, R4, FW1 and FW2. Do not send routing updates towards the stub networks. Configure default routes on routers RA, RB and RC.
+5. Configure filtering on firewalls FW1 and FW2. Only allow traffic from ATT monitoring server to enter FW1. No other traffic except OSPF routing is permitted. Only web, email and ssh services can be sent to RA. No other traffic is permitted to RA.
   
 ### Configuration task: description of the SNMP scenario to be configured using the LLM
 > Configure the SNMP agents on routers RA, RB and RC.
