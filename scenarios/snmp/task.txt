@@ -1,0 +1,7 @@
+Configure the SNMP agents on routers RA, RB and RC.
+- Set the community string to "att-monitoring".
+- Restrict access to the SNMP service to the 1.1.1.1 host only. 
+- Enable traps to be sent to the monitoring server. 
+
+Configure firewalls to enable SNMP monitoring.
+ - Update the ACLs on routers FW1 and FW2 to allow SNMP communication. 
